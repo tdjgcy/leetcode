@@ -1,0 +1,37 @@
+# 167
+class Solution(object):
+     def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        """
+        #my answer
+        
+        mid=int(len(numbers)/2)+1
+        
+        for i in range(mid):
+            for j in range(mid,len(numbers)):
+                if numbers[i]+numbers[j]==target:
+                    return [i+1,j+1]
+                
+        if target<=numbers[mid-1]+numbers[mid-2]:           
+            for i in range(mid):
+                for j in range(i+1,mid):
+                    if numbers[i]+numbers[j]==target:
+                        return [i+1,j+1]
+        else:
+            for i in range(mid,len(numbers)):
+                for j in range(i+1,len(numbers)):
+                    if numbers[i]+numbers[j]==target:
+                        return [i+1,j+1]
+        """
+        dict={}
+        for i in range(len(numbers)):
+            a=target-numbers[i]
+            if numbers[i] in dict:
+                return dict[numbers[i]]+1,i+1
+
+            else:
+                dict[a]=i
